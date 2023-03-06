@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 17:25:51 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/03/06 23:12:22 by bsirikam         ###   ########.fr       */
+/*   Created: 2023/03/06 17:27:54 by bsirikam          #+#    #+#             */
+/*   Updated: 2023/03/06 17:28:51 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-t_philo	*init(void)
+int	ft_atoi(const char *chnb)
 {
-	t_philo	*philo;
+	int	i;
+	int	count;
+	int	result;
 
-	philo = (t_philo *)malloc(sizeof(t_philo));
-	if (!philo)
-		return (NULL);
-	philo->num_philo = 0;
-	philo->time_to_die = 0;
-	philo->time_to_eat = 0;
-	philo->time_to_sleep = 0;
-	philo->num_must_eat = 0;
-	return (philo);
-}
-
-int	main(int ac, char *av[])
-{
-	t_philo	*philo;
-
-	if (ac < 2)
-		return (0);
-	philo = init();
+	i = 0;
+	result = 0;
+	count = 1;
+	while (ft_isspace(chnb[i]))
+		i++;
+	if (chnb[i] == '-' || chnb[i] == '+')
+	{
+		if (chnb[i] == '-')
+			count = count * -1;
+		i++;
+	}
+	while (chnb[i] >= '0' && chnb[i] <= '9')
+	{
+		result = result * 10 + (chnb[i] - '0');
+		i++;
+	}
+	return (result * count);
 }
