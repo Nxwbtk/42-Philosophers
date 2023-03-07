@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:25:51 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/03/06 23:12:22 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:44:07 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,64 @@ t_philo	*init(void)
 	return (philo);
 }
 
+void	free_av(char **av)
+{
+	int	i;
+
+	i = 0;
+	while (av[i])
+	{
+		free(av[i]);
+		i++;
+	}
+	free(av);
+}
+
+int	check_argv(char **av)
+{
+	int		i;
+	int		j;
+	int		count;
+	char	**str;
+
+	i = 1;
+	count = 0;
+	while (av[i])
+	{
+		j = 0;
+		str = ft_split(av[i]);
+		while (str[j])
+		{
+			if (!ft_isdigit(str[j]))
+			{
+				free_av(str);
+				return (0);
+			}
+			count++;
+			j++;
+		}
+		free_av(str);
+		i++;
+	}
+	return (count);
+}
+
 int	main(int ac, char *av[])
 {
 	t_philo	*philo;
+	int		size;
 
 	if (ac < 2)
 		return (0);
 	philo = init();
+	if (!philo)
+		return (0);
+	size = check_argv(av);
+	if (size == 0)
+	{
+		free(philo);
+		printf("Error: Invalid argument\n");
+		return (0);
+	}
+	free(philo);
 }

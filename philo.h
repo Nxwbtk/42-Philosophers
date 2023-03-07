@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:37:27 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/03/06 17:40:54 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:56:29 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_philo
 }				t_philo;
 
 int		ft_isspace(char c);
+int		ft_isdigit(char *s);
 int		ft_atoi(const char *chnb);
 char	**ft_split(char *s);
 

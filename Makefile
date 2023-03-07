@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+         #
+#    By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/05 04:36:19 by bsirikam          #+#    #+#              #
-#    Updated: 2023/03/06 17:34:09 by bsirikam         ###   ########.fr        #
+#    Updated: 2023/03/07 17:56:39 by bsirikam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = philo
 CC = gcc
 CFLAGS = #-Wall -Wextra -Werror
 
-SRC = main.c ft_split.c
+SRC = main.c ft_split.c ft_atoi.c
 HEADER = philo.h
 
 OBJ_C = $(SRC:.c=.o)
