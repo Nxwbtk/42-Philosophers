@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:25:51 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/03/07 18:44:07 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/03/08 23:40:39 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,6 @@ int	main(int ac, char *av[])
 	if (!philo)
 		return (0);
 	size = check_argv(av);
-	if (size == 0)
-	{
-		free(philo);
-		printf("Error: Invalid argument\n");
-		return (0);
-	}
+	select_size(size, philo, av);
 	free(philo);
 }
