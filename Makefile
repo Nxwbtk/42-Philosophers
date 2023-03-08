@@ -6,7 +6,7 @@
 #    By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/05 04:36:19 by bsirikam          #+#    #+#              #
-#    Updated: 2023/03/08 23:12:12 by bsirikam         ###   ########.fr        #
+#    Updated: 2023/03/08 23:58:57 by bsirikam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ $(OBJ_DIR)/%.o: %.c $(HEADER)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	@$(CC) $(CFLAGS) -pthread -o $(NAME) $(OBJ)
 
 %.o: %.c $(HEADER)
 	@$(CC) $(CFLAGS) -c $< -o $@
