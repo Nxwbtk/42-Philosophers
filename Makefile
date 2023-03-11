@@ -6,7 +6,7 @@
 #    By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/05 04:36:19 by bsirikam          #+#    #+#              #
-#    Updated: 2023/03/12 01:11:22 by bsirikam         ###   ########.fr        #
+#    Updated: 2023/03/12 02:11:56 by bsirikam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 CFLAGS = #-Wall -Wextra -Werror
 
 SRC = main.c ft_split.c ft_atoi.c ft_select_size.c ft_strdup.c \
-ft_create_philo.c ft_create_thread.c
+ft_create_philo.c ft_create_thread.c ft_free_lst.c
 HEADER = philo.h
 
 OBJ_C = $(SRC:.c=.o)

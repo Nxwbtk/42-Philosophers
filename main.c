@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:25:51 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/03/12 01:12:13 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/03/12 02:12:17 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,5 @@ int	main(int ac, char *av[])
 	ft_create_philo(&philo, info);
 	ft_create_thread(philo);
 	free(info);
+	ft_free_lst(philo);
 }

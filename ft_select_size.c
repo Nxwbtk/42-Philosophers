@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:09:07 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/03/11 17:24:51 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/03/12 02:26:43 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int	get_num(t_info *philo, char **av, int size)
 		free_any(str2, size);
 		return (-1);
 	}
+	free_any(str2, size);
 	return (1);
 }
 
@@ -116,6 +117,5 @@ int	select_size(int size, t_info *philo, char **av)
 		if (get_num(philo, av, 5) == -1)
 			return (-1);
 	}
-
 	return (1);
 }
