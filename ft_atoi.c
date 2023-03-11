@@ -6,17 +6,27 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:27:54 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/03/07 17:55:08 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/03/11 17:32:41 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+void	check_gern(long *result)
+{
+	if (*result > 2147483647 || *result < -2147483648)
+	{
+		printf("Error\n");
+		*result = 0;
+	}
+}
+
 int	ft_atoi(const char *chnb)
 {
-	int	i;
-	int	count;
-	int	result;
+	int		i;
+	long	count;
+	long	result;
+	long	check;
 
 	i = 0;
 	result = 0;
@@ -34,6 +44,7 @@ int	ft_atoi(const char *chnb)
 		result = result * 10 + (chnb[i] - '0');
 		i++;
 	}
+	check_gern(&result);
 	return (result * count);
 }
 
@@ -44,7 +55,7 @@ int	ft_isdigit(char *s)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] < '0' || s[i] > '9')
+		if ((s[i] < '0' || s[i] > '9') && s[i] != '-')
 			return (0);
 		i++;
 	}

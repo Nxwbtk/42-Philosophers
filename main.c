@@ -6,25 +6,25 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:25:51 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/03/08 23:40:39 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/03/12 01:12:13 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-t_philo	*init(void)
+t_info	*init(void)
 {
-	t_philo	*philo;
+	t_info	*info;
 
-	philo = (t_philo *)malloc(sizeof(t_philo));
-	if (!philo)
+	info = (t_info *)malloc(sizeof(t_info));
+	if (!info)
 		return (NULL);
-	philo->num_philo = 0;
-	philo->time_to_die = 0;
-	philo->time_to_eat = 0;
-	philo->time_to_sleep = 0;
-	philo->num_must_eat = 0;
-	return (philo);
+	info->num_philo = 0;
+	info->time_to_die = 0;
+	info->time_to_eat = 0;
+	info->time_to_sleep = 0;
+	info->num_must_eat = 0;
+	return (info);
 }
 
 void	free_av(char **av)
@@ -69,17 +69,36 @@ int	check_argv(char **av)
 	return (count);
 }
 
+t_philo	*p_init(void)
+{
+	t_philo	*philo;
+
+	philo = (t_philo *)malloc(sizeof(t_philo));
+	if (!philo)
+		return (NULL);
+	philo->next = NULL;
+	return (philo);
+}
+
 int	main(int ac, char *av[])
 {
+	t_info	*info;
 	t_philo	*philo;
 	int		size;
 
+	philo = NULL;
 	if (ac < 2)
 		return (0);
-	philo = init();
-	if (!philo)
+	info = init();
+	if (!info)
 		return (0);
 	size = check_argv(av);
-	select_size(size, philo, av);
-	free(philo);
+	if (select_size(size, info, av) == -1)
+	{
+		free(info);
+		return (0);
+	}
+	ft_create_philo(&philo, info);
+	ft_create_thread(philo);
+	free(info);
 }
