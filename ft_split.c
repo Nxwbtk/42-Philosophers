@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:22:48 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/03/06 17:25:23 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/03/09 14:31:29 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	**ft_split(char *s)
 
 	i = 0;
 	j = 0;
-	res = (char **)malloc(sizeof(char *) * 500);
+	res = (char **)malloc(sizeof(char *) * 5000);
 	if (!res)
 		return (NULL);
 	while (s[i] && ft_isspace(s[i]))
