@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:37:27 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/03/26 16:23:54 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/03/27 23:22:28 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_philo
 	pthread_t		philo_thread;
 	t_info			info;
 	pthread_mutex_t	fork;
+	pthread_mutex_t	*rfork;
 	struct s_philo	*next;
 }				t_philo;
 
