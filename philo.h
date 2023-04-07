@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 typedef struct s_info
 {
@@ -35,6 +36,7 @@ typedef struct s_philo
 	pthread_mutex_t	fork;
 	pthread_mutex_t	*rfork;
 	struct s_philo	*next;
+	struct timeval	t_time;
 }				t_philo;
 
 int		ft_isspace(char c);

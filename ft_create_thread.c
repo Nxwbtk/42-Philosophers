@@ -65,6 +65,8 @@ void	ft_create_thread(t_philo *philo)
 	tmp = philo;
 	while (1)
 	{
+		gettimeofday(&(tmp)->t_time, NULL);
+		printf("%ld\n", tmp->t_time.tv_sec);
 		pthread_create(&(tmp)->philo_thread, NULL, start, (void *)(tmp));
 		usleep(30);
 		// printf("philo %d done\n", tmp->id);
