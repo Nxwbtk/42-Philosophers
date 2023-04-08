@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:37:27 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/03/27 23:22:28 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/09 01:42:53 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,15 @@ typedef struct s_info
 typedef struct s_philo
 {
 	int				id;
+	int				arrive_time;
+	long			before;
+	long			after;
+	long			last_eat;
 	pthread_t		philo_thread;
 	t_info			info;
 	pthread_mutex_t	fork;
 	pthread_mutex_t	*rfork;
+	pthread_mutex_t	*table;
 	struct s_philo	*next;
 	struct timeval	t_time;
 }				t_philo;
@@ -43,12 +48,15 @@ int		ft_isspace(char c);
 int		ft_isdigit(char *s);
 int		ft_atoi(const char *chnb);
 int		select_size(int size, t_info *philo, char **av);
+int	ft_checkdie(t_philo *philo);
 char	**ft_split(char *s);
 char	*ft_strdup(char *s);
 void	free_av(char **av);
 void	ft_create_philo(t_philo **philo, t_info *info);
 void	ft_create_thread(t_philo *philo);
 void	ft_free_lst(t_philo *philo);
+void	lock_ban(t_philo *philo);
+void	unlock_ban(t_philo *philo);
 t_philo	*p_init(void);
 
 #endif
