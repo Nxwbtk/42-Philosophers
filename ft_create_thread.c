@@ -6,13 +6,13 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:26:57 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/09 17:38:51 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/09 18:58:09 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-long	gettime();
+long	gettime(void);
 
 void	*start(void *philo)
 {
@@ -41,7 +41,7 @@ void	init_fork(t_philo *philo)
 	tmp->rfork = &(head)->fork;
 }
 
-long	gettime()
+long	gettime(void)
 {
 	long		res;
 	struct timeval	t_time;
