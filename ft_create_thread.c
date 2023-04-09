@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:26:57 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/09 02:03:28 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:38:51 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,7 @@ void	*start(void *philo)
 	tmp = (t_philo *)(philo);
 	while (1)
 	{
-		lock_ban(tmp);
-		pthread_mutex_unlock(tmp->table);
-		printf("%ld ms philo %d eating\n", tmp->after, tmp->id);
-		usleep(tmp->info.time_to_eat * 1000);
-		tmp->last_eat = gettime();
-		tmp->after = gettime() - tmp->before;
-		unlock_ban(tmp);
-		printf("%ld ms philo %d is thinking\n", tmp->after, tmp->id);
-		usleep(tmp->info.time_to_sleep * 1000);
-		tmp->after = gettime() - tmp->before;
-		printf("%ld ms philo %d is sleeping\n", tmp->after, tmp->id);
-		tmp->arrive_time += gettime() - tmp->last_eat;
-		// printf("arrive %d\n", tmp->arrive_time);
-		// if (ft_checkdie(tmp))
-		// 	break ;
+		ft_eat(tmp);
 	}
 	return (NULL);
 }
@@ -69,6 +55,7 @@ void	go_init(t_philo *philo)
 {
 	t_philo			*tmp;
 	pthread_mutex_t	*table;
+	pthread_mutex_t	*time;
 
 	tmp = philo;
 	while (tmp)
@@ -86,6 +73,14 @@ void	go_init(t_philo *philo)
 		tmp->table = table;
 		tmp = tmp->next;
 	}
+	time = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
+	pthread_mutex_init(time, NULL);
+	tmp = philo;
+	while (tmp)
+	{
+		tmp->time = time;
+		tmp = tmp->next;
+	}
 }
 
 void	ft_create_thread(t_philo *philo)
@@ -98,8 +93,9 @@ void	ft_create_thread(t_philo *philo)
 	i = 1;
 	k = 0;
 	init_fork(philo);
-	head = philo;
 	go_init(philo);
+	ft_init_time(philo);
+	head = philo;
 	tmp = philo;
 	while (k < 2)
 	{
@@ -111,7 +107,6 @@ void	ft_create_thread(t_philo *philo)
 				tmp->last_eat = 0;
 				tmp->arrive_time = 0;
 				tmp->after = 0;
-				tmp->before = gettime();
 				pthread_create(&(tmp)->philo_thread, NULL, start, (void *)(tmp));
 				usleep(5);
 				i += 2;

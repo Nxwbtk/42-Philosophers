@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_kunjaeban.c                                     :+:      :+:    :+:   */
+/*   ft_sleep.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 21:06:33 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/09 15:27:01 by bsirikam         ###   ########.fr       */
+/*   Created: 2023/04/09 15:14:41 by bsirikam          #+#    #+#             */
+/*   Updated: 2023/04/09 15:17:41 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	lock_ban(t_philo *philo)
+void	ft_sleep(int time_eat)
 {
-	pthread_mutex_lock(philo->table);
-	pthread_mutex_lock(&(philo)->fork);
-	printf("%ld ms philo %d taken left fork\n", philo->after, philo->id);
-	pthread_mutex_lock(philo->rfork);
-	printf("%ld ms philo %d taken right fork\n", philo->after, philo->id);
-}
+	long	now;
 
-void	unlock_ban(t_philo *philo)
-{
-	pthread_mutex_unlock(philo->rfork);
-	pthread_mutex_unlock(&(philo)->fork);
+	now = gettime();
+	while (gettime() - now < (long)time_eat)
+		usleep(1);
 }

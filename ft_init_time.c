@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_kunjaeban.c                                     :+:      :+:    :+:   */
+/*   ft_init_time.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 21:06:33 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/09 15:27:01 by bsirikam         ###   ########.fr       */
+/*   Created: 2023/04/09 16:08:08 by bsirikam          #+#    #+#             */
+/*   Updated: 2023/04/09 16:41:39 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	lock_ban(t_philo *philo)
+void	ft_init_time(t_philo *philo)
 {
-	pthread_mutex_lock(philo->table);
-	pthread_mutex_lock(&(philo)->fork);
-	printf("%ld ms philo %d taken left fork\n", philo->after, philo->id);
-	pthread_mutex_lock(philo->rfork);
-	printf("%ld ms philo %d taken right fork\n", philo->after, philo->id);
-}
+	t_keeptime	*time;
+	t_philo		*tmp;
 
-void	unlock_ban(t_philo *philo)
-{
-	pthread_mutex_unlock(philo->rfork);
-	pthread_mutex_unlock(&(philo)->fork);
+	time = (t_keeptime *)malloc(sizeof(t_keeptime *));
+	if (!time)
+		return ;
+	time->start_time = gettime();
+	tmp = philo;
+	while (tmp)
+	{
+		tmp->before = time->start_time;
+		tmp = tmp->next;
+	}
 }
