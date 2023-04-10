@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:37:27 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/09 18:52:30 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/10 22:10:41 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	lock_ban(t_philo *philo);
 void	unlock_ban(t_philo *philo);
 void	ft_init_time(t_philo *philo);
 void	ft_eat(t_philo *philo);
+void	ft_bed(t_philo *philo);
+void	ft_think(t_philo *philo);
 t_philo	*p_init(void);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_thread.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:26:57 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/09 18:58:09 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/10 22:24:05 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	*start(void *philo)
 	while (1)
 	{
 		ft_eat(tmp);
+		ft_bed(tmp);
+		ft_think(tmp);
 	}
 	return (NULL);
 }
@@ -43,7 +45,7 @@ void	init_fork(t_philo *philo)
 
 long	gettime(void)
 {
-	long		res;
+	long			res;
 	struct timeval	t_time;
 
 	gettimeofday(&t_time, NULL);
