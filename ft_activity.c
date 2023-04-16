@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:36:49 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/16 00:02:16 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/16 19:27:51 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	ft_think(t_philo *philo)
 {
 	printf("%ld ms philo %d is thinking\n", gettime() - philo->before \
 	, philo->id);
-	// printf("ID %d Time %ld\n", philo->id, philo->after);
 	if (ft_checkdie(philo))
 		return (1);
 	return (0);
@@ -54,12 +53,6 @@ int	ft_think(t_philo *philo)
 
 void	die(t_philo *philo)
 {
-	t_philo	*tmp;
-
-	tmp = philo;
-	while (tmp)
-	{
-		pthread_mutex_unlock(&(tmp)->fork);
-		tmp = tmp->next;
-	}
+	printf("HELLO FROM DIE\n");
+	pthread_mutex_lock(philo->time);
 }

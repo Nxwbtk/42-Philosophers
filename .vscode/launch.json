@@ -3,11 +3,22 @@
   "configurations": [
     {
       "name": "C/C++ Runner: Debug Session",
-      "type": "lldb",
+      "type": "cppdbg",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/buntakansirikamonthip/42Cursus/42-Philosophers",
-      "program": "/Users/buntakansirikamonthip/42Cursus/42-Philosophers/build/Debug/outDebug"
+      "stopAtEntry": false,
+      "externalConsole": false,
+      "cwd": "/home/ubuntu/42Cursus/42-Philosophers",
+      "program": "/home/ubuntu/42Cursus/42-Philosophers/build/Debug/outDebug",
+      "MIMode": "lldb",
+      "miDebuggerPath": "lldb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
     }
   ]
 }

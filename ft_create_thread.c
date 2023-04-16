@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:26:57 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/16 00:07:25 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/16 19:32:07 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,23 @@ void	*start(void *philo)
 	{
 		if (ft_eat(tmp))
 		{
-			die(tmp);
+			// die(tmp);
+			printf("DIEEE\n");
+			pthread_mutex_lock(tmp->time);
 			break ;
 		}
 		if (ft_bed(tmp))
 		{
-			die(tmp);
+			// die(tmp);
+			printf("DIEEE\n");
+			pthread_mutex_lock(tmp->time);
 			break ;
 		}
 		if (ft_think(tmp))
 		{
-			die(tmp);
+			// die(tmp);
+			printf("DIEEE\n");
+			pthread_mutex_lock(tmp->time);
 			break ;
 		}
 	}
