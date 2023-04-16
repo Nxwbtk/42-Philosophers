@@ -6,30 +6,60 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:36:49 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/10 22:23:51 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/16 00:02:16 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_eat(t_philo *philo)
+int	ft_eat(t_philo *philo)
 {
+	if (ft_checkdie(philo))
+		return (1);
+	philo->last_eat = gettime();
+	philo->after = 0;
 	lock_ban(philo);
 	pthread_mutex_unlock(philo->table);
 	printf("%ld ms philo %d is eating\n", gettime() - philo->before, philo->id);
 	usleep(philo->info.time_to_eat * 1000);
 	unlock_ban(philo);
+	philo->after += gettime() - philo->last_eat;
+	philo->last_eat = gettime();
+	if (ft_checkdie(philo))
+		return (1);
+	return (0);
 }
 
-void	ft_bed(t_philo *philo)
+int	ft_bed(t_philo *philo)
 {
+	if (ft_checkdie(philo))
+		return (1);
 	printf("%ld ms philo %d is sleeping\n", gettime() - philo->before \
 	, philo->id);
 	usleep(philo->info.time_to_sleep * 1000);
+	philo->after += gettime() - philo->last_eat;
+	philo->last_eat = gettime();
+	return (0);
 }
 
-void	ft_think(t_philo *philo)
+int	ft_think(t_philo *philo)
 {
 	printf("%ld ms philo %d is thinking\n", gettime() - philo->before \
 	, philo->id);
+	// printf("ID %d Time %ld\n", philo->id, philo->after);
+	if (ft_checkdie(philo))
+		return (1);
+	return (0);
+}
+
+void	die(t_philo *philo)
+{
+	t_philo	*tmp;
+
+	tmp = philo;
+	while (tmp)
+	{
+		pthread_mutex_unlock(&(tmp)->fork);
+		tmp = tmp->next;
+	}
 }

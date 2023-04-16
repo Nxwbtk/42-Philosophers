@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:26:57 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/10 22:24:05 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/16 00:07:25 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,21 @@ void	*start(void *philo)
 	tmp = (t_philo *)(philo);
 	while (1)
 	{
-		ft_eat(tmp);
-		ft_bed(tmp);
-		ft_think(tmp);
+		if (ft_eat(tmp))
+		{
+			die(tmp);
+			break ;
+		}
+		if (ft_bed(tmp))
+		{
+			die(tmp);
+			break ;
+		}
+		if (ft_think(tmp))
+		{
+			die(tmp);
+			break ;
+		}
 	}
 	return (NULL);
 }
@@ -109,6 +121,7 @@ void	ft_create_thread(t_philo *philo)
 				tmp->last_eat = 0;
 				tmp->arrive_time = 0;
 				tmp->after = 0;
+				tmp->last_eat = tmp->before;
 				pthread_create(&(tmp)->philo_thread, NULL, start, (void *)(tmp));
 				usleep(5);
 				i += 2;

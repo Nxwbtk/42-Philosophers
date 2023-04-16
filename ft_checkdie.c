@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_checkdie.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 00:24:21 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/09 01:43:28 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/15 17:10:39 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,10 @@
 
 int	ft_checkdie(t_philo *philo)
 {
-	if (philo->info.num_must_eat > 0)
+	if (philo->after > philo->info.time_to_die)
 	{
-		if (philo->after >= philo->info.num_must_eat)
-			return (1);
-	}
-	if (philo->arrive_time >= philo->info.time_to_die)
+		printf("%ld ms philo %d die\n", philo->after, philo->id);
 		return (1);
-	else if (philo->arrive_time < philo->info.time_to_die)
-	{
-		philo->arrive_time = 0;
-		return (0);
 	}
 	return (0);
 }

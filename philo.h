@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:37:27 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/10 22:10:41 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/15 23:58:59 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ typedef struct s_philo
 int		ft_isspace(char c);
 int		ft_isdigit(char *s);
 int		ft_atoi(const char *chnb);
+int		ft_eat(t_philo *philo);
+int		ft_bed(t_philo *philo);
+int		ft_think(t_philo *philo);
 int		select_size(int size, t_info *philo, char **av);
 int		ft_checkdie(t_philo *philo);
 long	gettime(void);
@@ -67,9 +70,7 @@ void	ft_free_lst(t_philo *philo);
 void	lock_ban(t_philo *philo);
 void	unlock_ban(t_philo *philo);
 void	ft_init_time(t_philo *philo);
-void	ft_eat(t_philo *philo);
-void	ft_bed(t_philo *philo);
-void	ft_think(t_philo *philo);
+void	die(t_philo *philo);
 t_philo	*p_init(void);
 
 #endif
