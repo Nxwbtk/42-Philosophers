@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:25:51 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/08 20:16:52 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/17 22:51:10 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,5 @@ int	main(int ac, char *av[])
 	ft_create_thread(philo);
 	// free(info);
 	// ft_free_lst(philo);
-	printf("Exit\n");
+	// printf("Exit\n");
 }

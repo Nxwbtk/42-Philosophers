@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:37:27 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/15 23:58:59 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/17 22:49:58 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		ft_bed(t_philo *philo);
 int		ft_think(t_philo *philo);
 int		select_size(int size, t_info *philo, char **av);
 int		ft_checkdie(t_philo *philo);
+int	ft_one(t_philo *philo);
 long	gettime(void);
 char	**ft_split(char *s);
 char	*ft_strdup(char *s);
