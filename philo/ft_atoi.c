@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:27:54 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/03/11 17:32:41 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/22 02:56:29 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	ft_atoi(const char *chnb)
 	int		i;
 	long	count;
 	long	result;
-	long	check;
 
 	i = 0;
 	result = 0;

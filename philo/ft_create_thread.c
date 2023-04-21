@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:26:57 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/22 02:12:01 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/22 03:11:54 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	*start(void *philo)
 	{
 		if (ft_eat(tmp))
 			return (0);
-		if (tmp->count_eat == tmp->info.num_must_eat)
+		if (tmp->count_eat == tmp->info.num_must_eat && \
+		tmp->info.num_must_eat != 0)
 		{
 			return (0);
 		}
@@ -80,54 +81,23 @@ int	go_init(t_philo *philo)
 		return (1);
 	pthread_mutex_init(time, NULL);
 	salive->alive = 1;
-	while (tmp)
-	{
-		pthread_mutex_init(&(tmp)->fork, NULL);
-		tmp->table = table;
-		tmp->count_eat = 0;
-		tmp->time = time;
-		tmp->last_eat = 0;
-		tmp->arrive_time = 0;
-		tmp->after = 0;
-		tmp->alive = salive;
-		tmp = tmp->next;
-	}
+	li(tmp, table, time, salive);
 	return (0);
 }
 
 void	ft_create_thread(t_philo *philo)
 {
+	t_philo	*tmp;
 	int		i;
 	int		k;
-	t_philo	*tmp;
-	t_philo	*head;
 
-	i = 1;
-	k = 0;
 	init_fork(philo);
 	if (go_init(philo))
 		return ;
 	ft_init_time(philo);
-	head = philo;
-	tmp = philo;
-	while (k < 2)
-	{
-		tmp = head;
-		while (i <= tmp->info.num_philo && tmp != NULL)
-		{
-			if (tmp->id == i)
-			{
-				tmp->last_eat = 0;
-				pthread_create(&(tmp)->philo_thread, NULL, start, (void *)(tmp));
-				usleep(5);
-				i += 2;
-			}
-			if (tmp->next)
-				tmp = tmp->next;
-		}
-		i = 2;
-		k++;
-	}
+	i = 1;
+	k = 0;
+	loop_create(philo, i, k);
 	pthread_create(&(philo)->alive->p_alive, NULL, &ft_time, philo);
 	tmp = philo;
 	while (tmp)

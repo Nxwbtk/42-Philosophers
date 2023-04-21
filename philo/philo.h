@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:37:27 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/22 01:19:31 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/22 02:54:40 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,11 @@ void	unlock_ban(t_philo *philo);
 void	ft_init_time(t_philo *philo);
 void	die(t_philo *philo);
 void	detach(t_philo *philo);
+void	ft_mal(t_philo *tmp);
+void	*start(void *philo);
+void	loop_create(t_philo *philo, int i, int k);
+void	mal(t_philo *tmp, pthread_mutex_t *tab, pthread_mutex_t *t, t_alive *s);
+void	li(t_philo *tmp, pthread_mutex_t *tab, pthread_mutex_t *t, t_alive *s);
 t_philo	*p_init(void);
 
 #endif
