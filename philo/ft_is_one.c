@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 22:44:55 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/22 02:23:21 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/22 03:45:35 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_one(t_philo *philo)
 	if (philo->info.num_philo == 1)
 	{
 		printf("0 ms philo %d taken left fork\n", philo->id);
-		usleep(philo->info.time_to_die * 1000);
+		my_sleep(philo->info.time_to_die);
 		printf("%d ms philo %d is death\n", philo->info.time_to_die, philo->id);
 		return (1);
 	}

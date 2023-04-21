@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:37:27 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/22 02:54:40 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/22 03:46:33 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ char	**ft_split(char *s);
 char	*ft_strdup(char *s);
 void	*ft_time(void *alive);
 void	free_av(char **av);
-void	ft_sleep(int time_eat);
 void	ft_create_philo(t_philo **philo, t_info *info);
 void	ft_create_thread(t_philo *philo);
 void	ft_free_lst(t_philo *philo);
@@ -86,6 +85,7 @@ void	*start(void *philo);
 void	loop_create(t_philo *philo, int i, int k);
 void	mal(t_philo *tmp, pthread_mutex_t *tab, pthread_mutex_t *t, t_alive *s);
 void	li(t_philo *tmp, pthread_mutex_t *tab, pthread_mutex_t *t, t_alive *s);
+void	my_sleep(int time);
 t_philo	*p_init(void);
 
 #endif
