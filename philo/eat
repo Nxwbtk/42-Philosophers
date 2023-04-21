@@ -1,0 +1,32 @@
+0 ms philo 1 taken left fork
+0 ms philo 1 taken right fork
+0 ms philo 1 is eating
+0 ms philo 3 taken left fork
+0 ms philo 3 taken right fork
+0 ms philo 3 is eating
+102 ms philo 3 is sleeping
+105 ms philo 1 is sleeping
+105 ms philo 2 taken left fork
+105 ms philo 2 taken right fork
+105 ms philo 2 is eating
+105 ms philo 4 taken left fork
+105 ms philo 4 taken right fork
+105 ms philo 4 is eating
+202 ms philo 3 is thinking
+210 ms philo 1 is thinking
+210 ms philo 2 is sleeping
+210 ms philo 4 is sleeping
+210 ms philo 3 taken left fork
+210 ms philo 3 taken right fork
+210 ms philo 3 is eating
+210 ms philo 1 taken left fork
+210 ms philo 1 taken right fork
+210 ms philo 1 is eating
+315 ms philo 2 is thinking
+315 ms philo 4 is thinking
+315 ms philo 2 taken left fork
+315 ms philo 2 taken right fork
+315 ms philo 2 is eating
+315 ms philo 4 taken left fork
+315 ms philo 4 taken right fork
+315 ms philo 4 is eating

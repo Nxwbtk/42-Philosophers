@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:58:34 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/22 00:20:25 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/22 02:16:25 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	*ft_time(void *alive)
 	while (1)
 	{
 		ft_checkdie(philo);
-		if (philo->alive->alive == 0)
+		if (philo->alive->alive == 0 || \
+		(philo->count_eat == philo->info.num_must_eat && \
+		philo->info.num_must_eat != 0))
 			break ;
 	}
 	return (NULL);
