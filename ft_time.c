@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkdie.c                                      :+:      :+:    :+:   */
+/*   ft_time.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/09 00:24:21 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/21 08:52:43 by bsirikam         ###   ########.fr       */
+/*   Created: 2023/04/20 23:58:34 by bsirikam          #+#    #+#             */
+/*   Updated: 2023/04/21 00:28:21 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_checkdie(t_philo *philo, int dsttime)
+void	*ft_time(void *alive)
 {
-	t_philo	*tmp;
+	t_philo	*philo;
 
-	tmp = philo;
-	while (tmp)
+	philo = (t_philo *)alive;
+	while (1)
 	{
-		if (tmp->after - tmp->last_eat > tmp->info.time_to_die && tmp->count_eat < tmp->info.num_must_eat)
-		{
-			pthread_mutex_lock(&(tmp)->time);
-			printf("%ld ms philo %d is death\n", gettime() - tmp->before, tmp->id);
-			tmp->alive->alive = 0;
-			pthread_mutex_destroy(&(tmp)->time);
-			return (1);
-		}
+		if (philo->alive->alive == 0)
+			break ;
 	}
-	return (0);
+	return (NULL);
 }

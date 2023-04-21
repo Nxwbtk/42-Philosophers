@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:26:57 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/17 22:50:35 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/21 00:22:26 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,10 @@ void	*start(void *philo)
 	while (1)
 	{
 		if (ft_eat(tmp))
-		{
-			// die(tmp);
-			printf("DIEEE\n");
 			return (0);
-		}
-		// if (ft_bed(tmp))
-		// {
-		// 	// die(tmp);
-		// 	printf("DIEEE\n");
-		// 	break ;
-		// }
-		// if (ft_think(tmp))
-		// {
-		// 	// die(tmp);
-		// 	printf("DIEEE\n");
-		// 	break ;
-		// }
+		if (tmp->count_eat == tmp->info.num_must_eat)
+			return (0);
+		ft_bed(tmp);
 	}
 	return (NULL);
 }
@@ -70,36 +57,39 @@ long	gettime(void)
 	return (res);
 }
 
-void	go_init(t_philo *philo)
+int	go_init(t_philo *philo)
 {
 	t_philo			*tmp;
 	pthread_mutex_t	*table;
 	pthread_mutex_t	*time;
+	t_alive			*salive;
 
 	tmp = philo;
+	table = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
+	if (!table)
+		return (1);
+	pthread_mutex_init(table, NULL);
+	time = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
+	if (!time)
+		return (1);
+	salive = (t_alive *)malloc(sizeof(t_alive));
+	if (!salive)
+		return (1);
+	pthread_mutex_init(time, NULL);
+	salive->alive = 1;
 	while (tmp)
 	{
 		pthread_mutex_init(&(tmp)->fork, NULL);
-		tmp = tmp->next;
-	}
-	table = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
-	if (!table)
-		return ;
-	tmp = philo;
-	pthread_mutex_init(table, NULL);
-	while (tmp)
-	{
 		tmp->table = table;
-		tmp = tmp->next;
-	}
-	time = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
-	pthread_mutex_init(time, NULL);
-	tmp = philo;
-	while (tmp)
-	{
+		tmp->count_eat = 0;
 		tmp->time = time;
+		tmp->last_eat = 0;
+		tmp->arrive_time = 0;
+		tmp->after = 0;
+		tmp->alive = salive;
 		tmp = tmp->next;
 	}
+	return (0);
 }
 
 void	ft_create_thread(t_philo *philo)
@@ -112,7 +102,8 @@ void	ft_create_thread(t_philo *philo)
 	i = 1;
 	k = 0;
 	init_fork(philo);
-	go_init(philo);
+	if (go_init(philo))
+		return ;
 	ft_init_time(philo);
 	head = philo;
 	tmp = philo;
@@ -123,9 +114,6 @@ void	ft_create_thread(t_philo *philo)
 		{
 			if (tmp->id == i)
 			{
-				tmp->last_eat = 0;
-				tmp->arrive_time = 0;
-				tmp->after = 0;
 				tmp->last_eat = tmp->before;
 				pthread_create(&(tmp)->philo_thread, NULL, start, (void *)(tmp));
 				usleep(5);
@@ -137,6 +125,7 @@ void	ft_create_thread(t_philo *philo)
 		i = 2;
 		k++;
 	}
+	pthread_create(&(philo)->alive->p_alive, NULL, &ft_time, philo);
 	tmp = philo;
 	while (tmp)
 	{
