@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:13:29 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/22 02:23:48 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/22 05:17:57 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@ void	ft_free_lst(t_philo *philo)
 		free(tmp);
 	}
 	free(philo);
+}
+
+void	free_inlst(t_philo *philo)
+{
+	t_philo	*tmp;
+
+	free(philo->table);
+	free(philo->time);
+	free(philo->alive);
+	tmp = philo;
+	ft_free_lst(philo);
 }
 
 void	detach(t_philo *philo)
@@ -43,4 +54,6 @@ void	detach(t_philo *philo)
 		pthread_mutex_destroy(&(philo)->fork);
 		philo = philo->next;
 	}
+	philo = tmp;
+	free_inlst(philo);
 }

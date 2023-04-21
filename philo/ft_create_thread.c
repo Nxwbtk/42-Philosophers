@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:26:57 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/22 03:11:54 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/22 05:22:45 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	*start(void *philo)
 
 	tmp = (t_philo *)(philo);
 	if (ft_one(tmp))
+	{
 		return (0);
+	}
 	while (1)
 	{
 		if (ft_eat(tmp))

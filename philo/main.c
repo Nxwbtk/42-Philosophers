@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:25:51 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/22 02:22:44 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/22 05:04:18 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ int	main(int ac, char *av[])
 		return (0);
 	}
 	ft_create_philo(&philo, info);
+	free(info);
 	ft_create_thread(philo);
 }

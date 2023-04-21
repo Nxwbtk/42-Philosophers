@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_time.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 16:08:08 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/09 18:52:21 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/22 04:01:43 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ void	ft_init_time(t_philo *philo)
 		tmp->before = time->start_time;
 		tmp = tmp->next;
 	}
+	free(time);
 }
