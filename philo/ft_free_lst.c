@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:13:29 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/22 05:17:57 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/22 09:51:21 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	ft_free_lst(t_philo *philo)
 
 void	free_inlst(t_philo *philo)
 {
-	t_philo	*tmp;
+	// t_philo	*tmp;
 
 	free(philo->table);
 	free(philo->time);
 	free(philo->alive);
-	tmp = philo;
+	// tmp = philo;
 	ft_free_lst(philo);
 }
 
