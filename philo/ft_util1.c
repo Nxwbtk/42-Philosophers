@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 02:25:39 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/22 05:25:00 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/22 11:15:42 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	loop_create(t_philo *philo, int i, int k)
 			{
 				pthread_create(&(tmp)->philo_thread, NULL, start, \
 				(void *)(tmp));
-				usleep(100);
+				my_sleep(5);
 				i += 2;
 			}
 			if (tmp->next)

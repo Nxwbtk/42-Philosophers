@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:58:34 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/22 10:25:24 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/22 11:23:10 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	ft_unlock(t_philo *philo)
 	tmp = philo;
 	while (tmp)
 	{
-		// pthread_mutex_unlock(tmp->table);
-		// pthread_mutex_unlock(tmp->time);
+		pthread_mutex_unlock(tmp->table);
+		pthread_mutex_unlock(tmp->time);
 		pthread_mutex_unlock(&(tmp)->fork);
 		pthread_mutex_unlock(tmp->rfork);
 		tmp = tmp->next;
@@ -42,5 +42,7 @@ void	*ft_time(void *alive)
 			break ;
 		}
 	}
+	while (philo->alive->alive == 0)
+		ft_unlock(philo);
 	return (NULL);
 }
