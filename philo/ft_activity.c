@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:36:49 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/22 05:12:13 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/22 12:09:44 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_eat(t_philo *philo)
 	printf("%ld ms philo %d is eating\n", gettime() - philo->before, philo->id);
 	philo->last_eat = gettime() - philo->before;
 	philo->count_eat++;
-	my_sleep(philo->info.time_to_eat);
+	my_sleep(philo->info.time_to_eat, philo);
 	unlock_ban(philo);
 	if (philo->alive->alive == 0)
 		return (1);
@@ -33,7 +33,7 @@ int	ft_bed(t_philo *philo)
 		return (1);
 	printf("%ld ms philo %d is sleeping\n", gettime() - philo->before \
 	, philo->id);
-	my_sleep(philo->info.time_to_sleep);
+	my_sleep(philo->info.time_to_sleep, philo);
 	if (philo->alive->alive == 0)
 		return (1);
 	printf("%ld ms philo %d is thinking\n", gettime() - philo->before \

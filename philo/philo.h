@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:37:27 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/04/22 03:46:33 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/04/22 12:09:19 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ void	*start(void *philo);
 void	loop_create(t_philo *philo, int i, int k);
 void	mal(t_philo *tmp, pthread_mutex_t *tab, pthread_mutex_t *t, t_alive *s);
 void	li(t_philo *tmp, pthread_mutex_t *tab, pthread_mutex_t *t, t_alive *s);
-void	my_sleep(int time);
+void	my_sleep(int time, t_philo *philo);
+void	ft_unlock(t_philo *philo);
 t_philo	*p_init(void);
 
 #endif
