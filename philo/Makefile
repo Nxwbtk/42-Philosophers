@@ -6,14 +6,20 @@
 #    By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/05 04:36:19 by bsirikam          #+#    #+#              #
-#    Updated: 2023/04/22 04:22:25 by bsirikam         ###   ########.fr        #
+#    Updated: 2023/04/27 21:49:09 by bsirikam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -O2
+UNAME = $(shell uname -s)
+
+CFLAGS = -Wall -Wextra -Werror
+
+ifneq ($(UNAME), Darwin)
+	CFLAGS += -O2
+endif
 
 SRC = main.c ft_split.c ft_atoi.c ft_select_size.c ft_strdup.c \
 ft_create_philo.c ft_create_thread.c ft_free_lst.c ft_kunjaeban.c ft_checkdie.c \
@@ -26,7 +32,7 @@ OBJ = $(addprefix $(OBJ_DIR)/,$(OBJ_C))
 
 $(OBJ_DIR)/%.o: %.c $(HEADER)
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
