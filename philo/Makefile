@@ -13,7 +13,7 @@
 NAME = philo
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -O2
 
 SRC = main.c ft_split.c ft_atoi.c ft_select_size.c ft_strdup.c \
 ft_create_philo.c ft_create_thread.c ft_free_lst.c ft_kunjaeban.c ft_checkdie.c \
